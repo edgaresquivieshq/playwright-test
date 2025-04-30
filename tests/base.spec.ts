@@ -1,13 +1,15 @@
 import { test, expect } from "@playwright/test";
 import { LoginHelper } from "./helpers/login.helper";
-import { TEST_CONFIG, SELECTORS } from "./config";
+import { TEST_CONFIG } from "./config";
 
 test.describe("Base Page Tests", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(TEST_CONFIG.BASE_URL);
   });
 
-  test("should display all essential elements", async ({ page }) => {
+  test("should display all essential elements before the login", async ({
+    page,
+  }) => {
     const logo = page.getByRole("img", { name: "Tukios Logo" });
     const arrangementsText = page
       .getByRole("complementary")
